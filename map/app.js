@@ -37,3 +37,15 @@ let links = Array.from(document.querySelectorAll('a'));
 const urls = links.map(function (a) {
    return a.href;
 });
+
+function myMap(arr, callback) {
+   const mappedArray = [];
+   for (let i = 0; i < arr.length; i++) {
+      mappedArray.push(callback(arr[i]));
+   }
+   return mappedArray;
+}
+
+const priorityMap = myMap(todos, function (todo) {
+   return todo.priority;
+});

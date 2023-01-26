@@ -41,11 +41,16 @@ const urls = links.map(function (a) {
 function myMap(arr, callback) {
    const mappedArray = [];
    for (let i = 0; i < arr.length; i++) {
-      mappedArray.push(callback(arr[i]));
+      const val = callback(arr[i], i, arr);
+      mappedArray.push(val);
    }
    return mappedArray;
 }
 
 const priorityMap = myMap(todos, function (todo) {
    return todo.priority;
+});
+
+const repeatedStrings = myMap(['a', 'b', 'c', 'd', 'e'], function (str, idx) {
+   return str.repeat(idx);
 });

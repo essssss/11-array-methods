@@ -6,7 +6,13 @@ Examples:
     doubleValues([5,1,2,3,10]) // [10,2,4,6,20]
 
 */
-function doubleValues(arr) {}
+function doubleValues(arr) {
+   let doubledValuesArr = [];
+   arr.forEach(function (value, index) {
+      doubledValuesArr.push(value * 2);
+   });
+   return doubledValuesArr;
+}
 
 /*
 Write a function called onlyEvenValues which accepts an array and returns a new array with only the even values in the array passed to the function
@@ -16,7 +22,15 @@ Examples:
     onlyEvenValues([5,1,2,3,10]) // [2,10]
 
 */
-function onlyEvenValues(arr) {}
+function onlyEvenValues(arr) {
+   let onlyEvensArr = [];
+   arr.forEach(function (value, index) {
+      if (value % 2 === 0) {
+         onlyEvensArr.push(value);
+      }
+   });
+   return onlyEvensArr;
+}
 
 /*
 Write a function called showFirstAndLast which accepts an array of strings and returns a new array with only the first and last character of each string.
@@ -26,8 +40,16 @@ Examples:
     showFirstAndLast(['hi', 'goodbye', 'smile']) // ['hi', 'ge', 'se']
 
 */
-function showFirstAndLast(arr) {}
-
+function showFirstAndLast(arr) {
+   const firstLastArr = [];
+   arr.forEach(function (val) {
+      let first = val[0];
+      let last = val[val.length - 1];
+      let firstLast = first.concat(last);
+      firstLastArr.push(firstLast);
+   });
+   return firstLastArr;
+}
 /*
 Write a function called addKeyAndValue which accepts an array of objects, a key, and a value and returns the array passed to the function with the new key and value added for each object 
 
@@ -37,7 +59,14 @@ Examples:
     // [{name: 'Elie', title:'instructor'}, {name: 'Tim', title:'instructor'}, {name: 'Matt', title:'instructor'}, {name: 'Colt', title:'instructor'}]
 
 */
-function addKeyAndValue(arr, key, value) {}
+function addKeyAndValue(arr, key, value) {
+   const newKeyandValue = [];
+   arr.forEach(function (val) {
+      val[key] = value;
+      newKeyandValue.push(val);
+   });
+   return newKeyandValue;
+}
 
 /*
 Write a function called vowelCount which accepts a string and returns an object with the keys as the vowel and the values as the number of times the vowel appears in the string. This function should be case insensitive so a lowercase letter and uppercase letter should count
@@ -49,7 +78,20 @@ Examples:
     vowelCount('hmmm') // {};
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
-function vowelCount(str) {}
+function vowelCount(str) {
+   const vowels = 'aeiou';
+   str = str.toLowerCase();
+   const arr = Array.from(str);
+   const vowelCountObj = {};
+   arr.forEach(function (letter, i) {
+      if (vowels.indexOf(letter) >= 0 && !vowelCountObj[letter]) {
+         vowelCountObj[letter] = 1;
+      } else if (vowels.indexOf(letter) >= 0 && vowelCountObj[letter] >= 0) {
+         vowelCountObj[letter] = vowelCountObj[letter] + 1;
+      }
+   });
+   return vowelCountObj;
+}
 
 /*
 Write a function called doubleValuesWithMap which accepts an array and returns a new array with all the values in the array passed to the function doubled

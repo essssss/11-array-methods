@@ -54,3 +54,20 @@ function extractCompletedTodos() {
          return checkbox.parentElement.innerText;
       });
 }
+
+// to write our own filter function
+
+function myFilter(arr, callback) {
+   const newArray = [];
+   for (let i = 0; i < arr.length; i++) {
+      if (callback(arr[i], i, arr)) {
+         newArray.push(arr[i]);
+      }
+   }
+
+   return newArray;
+}
+
+const everyOtherWord = words.filter(function (word, i) {
+   return i % 2 === 0;
+});
